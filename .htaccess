@@ -1,9 +1,14 @@
 <IfModule mod_rewrite.c>
-	RewriteEngine On
+    RewriteEngine On
+
+    # Permitir acceso directo a archivos existentes
     RewriteCond %{REQUEST_FILENAME} -f [OR]
     RewriteCond %{REQUEST_FILENAME} -d
-
     RewriteRule \.(?:css|js|jpe?g|gif|png)$ - [L]
+
+    # Pasar cabecera de autorización (para JWT, por ejemplo)
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirigir rutas tipo /api/... al api_router.php
     RewriteRule ^api/(.*)$ api_router.php?resource=$1 [QSA,L]
 </IfModule>

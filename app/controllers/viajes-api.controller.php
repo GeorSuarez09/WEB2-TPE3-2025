@@ -9,10 +9,17 @@ class viajesApiController {
     }
 
     function getViajes($req, $res) {
+        if (isset($req->query->campo) && isset($req->query->orden)) {
+        $campo = $req->query->campo;   // ejemplo: fecha, origen, destino
+        $orden = $req->query->orden;   // ejemplo: ASC o DESC
+
+        $viajes = $this->model->getAllOrderedBy($campo, $orden);
+    }else{
         $viajes = $this->model->getViajes();
         if (empty($viajes)) {
             return $res->json("No hay viajes registrados", 404);
         }
+    }
         return $res->json($viajes);
     }
 
@@ -26,6 +33,7 @@ class viajesApiController {
     }
 
     function insertViaje($req, $res) {
+        var_dump($req->body);
         if (empty($req->body->fecha) || empty($req->body->origen) || empty($req->body->destino) || empty($req->body->ID_conductor) || empty($req->body->ID_usuario)) {
             return $res->json('Faltan datos', 400);
         }
@@ -77,3 +85,12 @@ class viajesApiController {
         return $res->json("El viaje con el id=$idViaje se eliminó", 204);
     }
 }
+
+/**public function getAllFilterByFinished($finished = false) {
+        $query = $this->db->prepare('SELECT * FROM tareas WHERE finalizada = ?');
+        $query->execute([$finished]);
+        $tasks = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $tasks;
+    }
+ */

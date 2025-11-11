@@ -23,6 +23,15 @@ class viajesModel{
         return $viaje;
     }
 
+    public function getAllOrderedBy($campo, $orden) {
+        $query = $this->db->prepare("SELECT * FROM viaje ORDER BY $campo $orden");
+        $query->execute();
+        $viajes = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $viajes;
+}
+
+
     function agregarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario){
         $query = $this->db->prepare('INSERT INTO viaje (fecha, origen, destino, ID_conductor, ID_usuario) VALUES (?, ?, ?, ?, ?)');
         $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario]);

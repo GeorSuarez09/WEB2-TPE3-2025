@@ -33,7 +33,7 @@ class viajesApiController {
     }
 
     function insertViaje($req, $res) {
-        var_dump($req->body);
+      
         if (empty($req->body->fecha) || empty($req->body->origen) || empty($req->body->destino) || empty($req->body->ID_conductor) || empty($req->body->ID_usuario)) {
             return $res->json('Faltan datos', 400);
         }

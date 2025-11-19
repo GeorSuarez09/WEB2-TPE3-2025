@@ -17,6 +17,8 @@ $router->addRoute('auth/login',     'GET',     'AuthApiController',    'login');
 
 $router->addRoute('viajes',     'GET', 'viajesApiController', 'getViajes');
 $router->addRoute('viajes/:id', 'GET', 'viajesApiController', 'getViajesById');
+$router->addMiddleware(new GuardMiddleware());
+
 $router->addRoute('viajes',         'POST',     'viajesApiController',    'insertViaje');
 $router->addRoute('viajes/:id',     'PUT',      'viajesApiController',    'updateViaje');
 $router->addRoute('viajes/:id',     'DELETE',   'viajesApiController',    'deleteViaje');

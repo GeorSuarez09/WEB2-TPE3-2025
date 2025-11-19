@@ -79,7 +79,7 @@ class viajesApiController {
 
         $this->model->editarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario, $idViaje);
         $updatedViaje = $this->model->getViajesById($idViaje);
-        return $res->json($updatedViaje, 201);
+        return $res->json($updatedViaje, 200);
     }
 
     function deleteViaje($req, $res) {
@@ -89,7 +89,7 @@ class viajesApiController {
             return $res->json("El viaje con el id=$idViaje no existe", 404);
         }
         $this->model->eliminarViaje($idViaje);
-        return $res->json("El viaje con el id=$idViaje se eliminó", 204);
+        return $res->json("El viaje con el id=$idViaje se eliminó", 200);
     }
 }
 

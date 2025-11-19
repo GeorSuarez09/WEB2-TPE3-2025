@@ -23,6 +23,14 @@ class viajesModel{
         return $viaje;
     }
 
+    public function getAllFilteredBy($campo, $valor) {
+        $query = $this->db->prepare("SELECT * FROM viaje WHERE $campo = ?");
+        $query->execute([$valor]);
+        $viajes = $query->fetchAll(PDO::FETCH_OBJ);
+
+        return $viajes;
+    }
+
     public function getAllOrderedBy($campo, $orden) {
         $query = $this->db->prepare("SELECT * FROM viaje ORDER BY $campo $orden");
         $query->execute();
@@ -30,6 +38,8 @@ class viajesModel{
 
         return $viajes;
 }
+
+
 
 
     function agregarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario){

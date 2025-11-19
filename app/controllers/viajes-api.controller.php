@@ -9,7 +9,14 @@ class viajesApiController {
     }
 
     function getViajes($req, $res) {
-        if (isset($req->query->campo) && isset($req->query->orden)) {
+        if (isset($req->query->campo) && isset($req->query->valor)) {
+        $campo = $req->query->campo;
+        $valor = $req->query->valor;
+
+        $viajes = $this->model->getAllFilteredBy($campo, $valor);
+    } 
+
+        else if (isset($req->query->campo) && isset($req->query->orden)) {
         $campo = $req->query->campo;   // ejemplo: fecha, origen, destino
         $orden = $req->query->orden;   // ejemplo: ASC o DESC
 

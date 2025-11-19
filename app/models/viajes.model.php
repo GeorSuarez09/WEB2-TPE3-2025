@@ -48,7 +48,7 @@ class viajesModel{
         return $this->db->lastInsertId();
     }
 
-    function editarViaje($fecha, $origen, $destino, $ID_conductor, $ID_viaje, $ID_usuario){
+    function editarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario, $ID_viaje){
         $query = $this->db->prepare('UPDATE viaje SET fecha = ?, origen = ?, destino = ?, ID_conductor = ?, ID_usuario = ? WHERE ID_viaje = ?');
         return $query->execute([$fecha, $origen, $destino, $ID_conductor, $ID_usuario, $ID_viaje]);
     }

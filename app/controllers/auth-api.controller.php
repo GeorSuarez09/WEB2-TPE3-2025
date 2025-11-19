@@ -23,10 +23,13 @@ class AuthApiController {
             // Si no es correcto, devolver error 401 Unauthorized
             return $response->json("Autenticación no valida", 401);
         }
+        
         $nombre = $user_pass[0];
         $password = $user_pass[1];
+        $usuarioPassword = password_hash($_POST['password'], PASSWORD_BCRYPT);
         // Buscar el usuario en la DB
         $userFromDB = $this->userModel->getByUser($nombre);
+
         
         // verificar la contreaseña con la de la base (hasheada)
         if(!$userFromDB || !password_verify($password, $userFromDB->password)) {

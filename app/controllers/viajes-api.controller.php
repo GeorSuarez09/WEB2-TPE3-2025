@@ -77,7 +77,7 @@ class viajesApiController {
         $ID_conductor = $req->body->ID_conductor;
         $ID_usuario = $req->body->ID_usuario;
 
-        $this->model->editarViaje($idViaje, $fecha, $origen, $destino, $ID_conductor, $ID_usuario);
+        $this->model->editarViaje($fecha, $origen, $destino, $ID_conductor, $ID_usuario, $idViaje);
         $updatedViaje = $this->model->getViajesById($idViaje);
         return $res->json($updatedViaje, 201);
     }

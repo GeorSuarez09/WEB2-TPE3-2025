@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-11-2025 a las 11:26:47
+-- Tiempo de generación: 20-11-2025 a las 11:01:17
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -38,8 +38,9 @@ CREATE TABLE `conductor` (
 --
 
 INSERT INTO `conductor` (`ID_conductor`, `nombre`, `vehiculo`) VALUES
-(1, 'Georgina', 'Peugeot 306'),
-(2, 'Nahuel', 'Fiat Duna');
+(4, 'Georgina', 'Peugeot 306'),
+(5, 'Nahuel', 'Fiat Duna'),
+(6, 'Melina', 'Goldtrend');
 
 -- --------------------------------------------------------
 
@@ -51,7 +52,7 @@ CREATE TABLE `usuario` (
   `ID_usuario` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
-  `password` varchar(45) NOT NULL
+  `password` varchar(256) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -59,7 +60,7 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`ID_usuario`, `nombre`, `email`, `password`) VALUES
-(1, 'Georgina', 'geoormel@gmail.com', '$2y$10$Cqrp/rXnc4q7lSJdwExbSeX/pfnlhbTzOCKOSH');
+(1, 'MelGeor', 'geoormel@gmail.com', '$2y$10$eu3ehNwUWqTq7UmZaNQeJuFtu6TCBT9LomnRYtnDTExSNmDORZZfW');
 
 -- --------------------------------------------------------
 
@@ -81,8 +82,11 @@ CREATE TABLE `viaje` (
 --
 
 INSERT INTO `viaje` (`ID_viaje`, `origen`, `destino`, `fecha`, `ID_usuario`, `ID_conductor`) VALUES
-(1, 'ameghino 968', 'paseo de los ninos 1886', '2025-11-12', 1, 2),
-(2, 'paseo de los ninos 2000', 'Los crisantelmo 1954', '2025-11-10', 1, 1);
+(5, 'Ameghino 900', 'Lisandro de la torre 400', '2025-11-13', 1, 4),
+(6, 'Ameghinoo 968', 'Pasteur 1050', '2025-11-29', 1, 5),
+(7, 'Ameghino 900', 'Azucena 440', '2025-11-19', 1, 4),
+(8, 'Azucena 450', 'Pasteur 1050', '2025-11-21', 1, 4),
+(9, 'Arenales 200', 'Ugarte 1026', '2025-11-28', 1, 6);
 
 --
 -- Índices para tablas volcadas
@@ -116,7 +120,7 @@ ALTER TABLE `viaje`
 -- AUTO_INCREMENT de la tabla `conductor`
 --
 ALTER TABLE `conductor`
-  MODIFY `ID_conductor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_conductor` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -128,7 +132,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `viaje`
 --
 ALTER TABLE `viaje`
-  MODIFY `ID_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID_viaje` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Restricciones para tablas volcadas

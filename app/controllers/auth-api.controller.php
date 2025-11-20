@@ -51,4 +51,8 @@
             return $response->json(createJWT($payload));
         }
 
+<<<<<<< HEAD
     }
+=======
+    }
+>>>>>>> 8d634ca0bd97b011c48d2c304b34c54ec8dc1146
